@@ -2,13 +2,13 @@
 
 ## Objetivo
 
-O projeto tem como objetivo facilitar e centralizar a comunicação entre as seguintes entidades: Universitários e Atléticas. O sistema é um PWA (Progressive Web App) que após o universitário fazer um cadastro, poderá ler um QRCode gerado pelos representantes da atlética (gerado no mesmo sistema) para entrar na atlética vinculada ao QRCode, após isso o usuário irá ter acesso as postagens e eventos daquela atlética, assim como a possíbilidade de inscrever-se para jogar pelos times das modalidades disponíveis, que após a aprovação dos representantes, irá disponibilizar a vizualização das datas dos treinos e campeonatos.
+O projeto tem como objetivo facilitar e centralizar a comunicação entre as seguintes entidades: Universitários e Atléticas. O sistema é um PWA (Progressive Web App) que após o universitário fazer um cadastro, poderá ler um QRCode gerado pelos representantes da atlética (gerado no mesmo sistema) para entrar na atlética vinculada ao QRCode, após isso o usuário irá ter acesso as postagens e eventos daquela atlética, assim como a possíbilidade de inscrever-se para jogar pelos times das modalidades disponíveis, que após a aprovação dos representantes, irá permitir a vizualização das datas dos treinos daquela modalidade para aquele usuário.
 
 Sistema também irá disponibilizar exclusivamente para representantes das atléticas as interfaces de gerenciamento dos usuários da atlética, gerenciamento dos atletas que se inscreveram para jogar, gerenciamento da agenda que será apresentada aos usuários e também a interface que irá controlar os QRCodes para a entrada.
 
 ## Contexto
 
-Atualmente as divulgações são feitas nas redes sociais das atléticas que concorrem com outros perfis, diminuindo assim a visibilidade. A solução feita pelo AtletGo é um sistema onde irá centralizar as postagens da atlética e também facilitar a visualização de datas de eventos.
+Atualmente as divulgações são feitas nas redes sociais, que acabam "concorrendo" com outros perfis, diminuindo assim a visibilidade das postagens. A solução feita pelo AtletGo é um sistema onde irá centralizar as postagens da atlética e também facilitar a visualização de datas de eventos e disponibilizando a funcionalidade para encontrar atletas para jogar pela atlética.
 
 ## Restrições
 
@@ -23,7 +23,7 @@ Sistema irá ser um PWA, portanto a portabilidade é um fator ja incluso por ser
 
 - **Funcionalidade:**
 
-Sistema terá poucas funcionalidades porém indispensáveis, sendo a mais importante delas a criação e a leitura do QRCode, visando que é a funcionalidade que irá permitir que o usuário acesse as outras funcionalidades.
+Sistema terá poucas funcionalidades porém indispensáveis, sendo a mais importante delas a criação e a leitura do QRCode, visando que é a funcionalidade que irá permitir que o usuário acesse outras partes do sistema.
 
 - **Confiabilidade:**
 
@@ -31,7 +31,7 @@ O gerenciamento de usuários, postagens e agenda será totalmente controlado pel
 
 - **Usabilidade:**
 
-Sistema irá atender na sua grande parte o público universitário e mais jovem, sendo assim a usabilidade não irá ser um problema tão grande, sistema busca ter uma interface moderna e atual e bem objetiva.
+Sistema irá atender na sua grande parte o público universitário e mais jovem, sendo assim a usabilidade será um problema tão grande. Sistema busca ter uma interface moderna, atual e bem objetiva.
 
 - **Eficiência:**
 
