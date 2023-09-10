@@ -12,8 +12,8 @@ Atualmente as divulgações são feitas nas redes sociais, que acabam "concorren
 
 ## Restrições
 
-Sistema não irá oferecer venda de produtos das atléticas (Canecas, uniformes, ingressos e etc).
-Sistema não se responsabiliza pelas postagens dos representantes das atléticas, sendo assim o controle feito exclusivamente pela atlética.
+- Sistema não irá oferecer venda de produtos das atléticas (Canecas, uniformes, ingressos e etc).
+- Sistema não se responsabiliza pelas postagens dos representantes das atléticas, sendo assim o controle feito exclusivamente pela atlética.
 
 ## Trade-offs
 
