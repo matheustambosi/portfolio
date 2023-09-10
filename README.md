@@ -51,13 +51,13 @@ Foi criado um projeto no [Figma](https://www.figma.com/file/7Eh2hEce9OKarSogU60E
 
 ## Stack
 
-Frontend - Nuxt v2 (Vuejs) e Tailwind CSS
-Backend - C# e .Net Core
-Banco de Dados - MySql
+- Frontend - Nuxt v2 (Vuejs) e Tailwind CSS
+- Backend - C# e .Net Core
+- Banco de Dados - MySql
 
-Teste E2E - Cypress
-Cobertura de código - SonarQube
-Observabilidade - Datadog
+- Teste E2E - Cypress
+- Cobertura de código - SonarQube
+- Observabilidade - Datadog
 
 ## Modelagem
 
