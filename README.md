@@ -47,7 +47,7 @@ Foi criado um projeto no [Figma](https://www.figma.com/file/7Eh2hEce9OKarSogU60E
 
 ## [C4 Model](/docs/c4-models.md)
 
-## Requisitos e Casos de uso
+## Requisitos e [Casos de uso](/docs/assets/UseCase.png)
 
 ## Stack
 
