@@ -45,7 +45,7 @@ Sistema poderá ter problemas envolvendo a leitura do QRCode em alguns modelos d
 
 Foi criado um projeto no [Figma](https://www.figma.com/file/7Eh2hEce9OKarSogU60EOv/AtletGo?type=design&node-id=0%3A1&mode=design&t=VUH6sks5chR7lZ3V-1) para a definição da identidade visual do produto.
 
-## C4 Model
+## [C4 Model](/docs/c4-models.md)
 
 ## Requisitos e Casos de uso
 
