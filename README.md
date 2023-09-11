@@ -4,7 +4,7 @@
 
 O projeto tem como objetivo facilitar e centralizar a comunicação entre as seguintes entidades: Universitários e Atléticas. O sistema é um PWA (Progressive Web App) que após o universitário fazer um cadastro, poderá ler um QRCode gerado pelos representantes da atlética (gerado no mesmo sistema) para entrar na atlética vinculada ao QRCode, após isso o usuário irá ter acesso as postagens e eventos daquela atlética, assim como a possíbilidade de inscrever-se para jogar pelos times das modalidades disponíveis, que após a aprovação dos representantes, irá permitir a vizualização das datas dos treinos daquela modalidade para aquele usuário.
 
-Sistema também irá disponibilizar exclusivamente para representantes das atléticas as interfaces de gerenciamento dos usuários da atlética, gerenciamento dos atletas que se inscreveram para jogar, gerenciamento da agenda que será apresentada aos usuários e também a interface que irá controlar os QRCodes para a entrada.
+Sistema também irá disponibilizar exclusivamente para representantes das atléticas as interfaces de gerenciamento dos usuários da atlética, gerenciamento dos atletas que se inscreveram para jogar, gerenciamento da agenda que será apresentada aos usuários, gerenciamento das postagens listadas na tela inicial, assim como a interface que irá controlar os QRCodes para a entrada.
 
 # Contexto
 
