@@ -1,6 +1,7 @@
 "use client"
 
 import { SessionProvider } from 'next-auth/react'
+import { NextUIProvider } from "@nextui-org/react";
 import React from 'react'
 
 interface Props {
@@ -9,6 +10,8 @@ interface Props {
 
 export default function NextAuthSessionProvider({ children }: Props) {
     return (
-        <SessionProvider>{children}</SessionProvider>
+        <NextUIProvider className="h-screen">
+            <SessionProvider>{children}</SessionProvider>
+        </NextUIProvider>
     )
 }

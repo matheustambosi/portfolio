@@ -6,19 +6,24 @@ export const authOptions: NextAuthOptions = {
         Credentials({
             name: "Credentials",
             credentials: {
-                email: { label: "Email", type: "text" },
-                password: { label: "Passoword", type: "password" }
+                userName: { label: "Email", type: "text" },
+                password: { label: "Password", type: "password" }
             },
             authorize(credentials, req) {
-                 if (credentials?.email === "admin" && credentials?.password === "admin") {
+                if (credentials?.userName === "admin" && credentials?.password === "admin") {
                     return {
                         id: "1",
+                        name: "Admin",
                         email: "admin@gmail.com"
                     }
-                 }
+                }
 
-                 return null
+                return null
             }
         })
-    ]
+    ],
+
+    pages: {
+        signIn: "/login"
+    }
 }

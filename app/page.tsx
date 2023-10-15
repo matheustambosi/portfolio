@@ -12,8 +12,8 @@ export default function Home() {
   }
 
   return (
-      <main className="min-h-screen flex justify-center items-center">
-        <h1>Pagina protegida</h1>
-      </main>
-    )
+    <main className="min-h-screen flex justify-center items-center">
+      <h1>Bem vindo</h1>
+    </main>
+  )
 }
