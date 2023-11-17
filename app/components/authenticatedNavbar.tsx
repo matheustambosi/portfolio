@@ -24,12 +24,12 @@ export default function AuthenticatedNavbar() {
 
     const menuItems = [
         { name: "Postagens", route: "/" },
-        { name: "Eventos", route: "/" },
-        { name: "Jogar pela atlética", route: "/" },
-        { name: "Usuários", route: "/" },
-        { name: "Atletas", route: "/" },
-        { name: "QRCodes", route: "/qrcode" },
-        { name: "Configurações", route: "/" },
+        { name: "Entrar em uma Atlética", route: "/lerqrcode" },
+        { name: "Eventos", route: "/eventos" },
+        { name: "Jogar pela Atlética", route: "atleta/quero-jogar" },
+        { name: "Usuários", route: "/atletica/usuarios" },
+        { name: "Atletas", route: "/atletica/atletas" },
+        { name: "QRCodes", route: "/atletica/qrcode" },
         { name: "Sair" }
     ];
 
@@ -62,6 +62,7 @@ export default function AuthenticatedNavbar() {
                     <Image
                         alt="logo"
                         src={logo.src}
+                        onClick={(e) => changeRoute(e, '/')}
                         width="180"
                     ></Image>
                 </NavbarBrand>

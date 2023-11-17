@@ -17,6 +17,14 @@ export default function Generate() {
         return <></>
     }
 
+    function callback(result: any) {
+        console.log(result)
+
+        if (result) {
+            setData(result.text)
+        }
+    }
+
     return (
         <main className="min-h-screen flex justify-center items-center">
             <div>Generate QR</div>
@@ -26,17 +34,7 @@ export default function Generate() {
             )}
 
             <QrReader
-                onResult={(result, error) => {
-                    if (!!result) {
-                        setData(result.getText);
-                    }
-
-                    if (!!error) {
-                        console.info(error);
-                    }
-
-                }
-                }
+                onResult={(result, error) => callback(result)}
                 constraints={{ facingMode: "environment" }}
                 className="w-2/5 h-2/5"
             />

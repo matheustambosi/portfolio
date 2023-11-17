@@ -3,8 +3,8 @@
 import React from "react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Pagination, getKeyValue, Button, Input, Modal, ModalContent, useDisclosure, ModalHeader, ModalBody, ModalFooter } from "@nextui-org/react";
 import { users } from "./data";
-import { SearchIcon } from "../assets/icons/SearchIcon";
-import { AddIcon } from "../assets/icons/AddIcon";
+import { SearchIcon } from "../../assets/icons/SearchIcon";
+import { AddIcon } from "../../assets/icons/AddIcon";
 import { useSession } from "next-auth/react";
 
 export default function QrCode() {
@@ -29,10 +29,14 @@ export default function QrCode() {
     return (
         <>
             <div className="p-2">
-                <div className="mb-2 flex justify-between">
-                    <Button isIconOnly className="bg-orange-400 mr-2" onPress={onOpen}>
-                        <AddIcon className="text-white"></AddIcon>
-                    </Button>
+                <div className="mb-2 flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                        <p className="py-4 text-2xl">QRCodes</p>
+                        <Button className="bg-orange-400 mr-2 text-white" onPress={onOpen}>
+                            Novo
+                            <AddIcon className="text-white"></AddIcon>
+                        </Button>
+                    </div>
 
                     <Input
                         isClearable
