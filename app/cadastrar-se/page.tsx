@@ -3,34 +3,46 @@
 import React, { useRef } from "react"
 import { Input, Card, CardBody, Button, Image } from "@nextui-org/react";
 import logo from '@/app/assets/images/logo.png';
-import { signIn } from "next-auth/react";
+import { toast } from "react-toastify";
 import { BackIcon } from "../assets/icons/BackIcon";
 import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
 
 export default function LoginPage() {
     const router = useRouter()
 
+    const userName = useRef("")
     const email = useRef("")
     const password = useRef("")
+    const confPassword = useRef("")
 
-    const onSubmit = async (e: any) => {
-        const res = await signIn("credentials", {
+    function cadastrar() {
+        var request = {
+            nome: userName.current,
             email: email.current,
-            password: password.current,
-            redirect: false
-        })
+            senha: password.current,
+            repeticaoSenha: confPassword.current
+        }
 
-        if (res?.ok)
-            router.push('/eventos')
-        else
-            toast(res?.error, { type: 'error', autoClose: 2000 })
+        validarRequest(request)
+
+        const response = fetch('http://localhost:43606/Autenticacao/Cadastro', {
+            method: 'POST',
+            body: JSON.stringify(request),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+
+    function validarRequest(request: any) {
+        if (request.senha !== request.repeticaoSenha)
+            toast('As senhas não são iguais', { hideProgressBar: true, autoClose: 2000, type: 'error' })
     }
 
     return (
         <div className="flex flex-col h-full justify-center items-center bg-orange-400">
 
-            <div className="w-3/5 md:w-2/5 lg:w-1/5 flex flex-col items-center">
+            <div className="w-4/5 md:w-4/6 lg:w-2/5 flex flex-col items-center">
                 <Button
                     onClick={(e) => router.push('/')}
                     isIconOnly
@@ -45,14 +57,16 @@ export default function LoginPage() {
                     className="mb-8"
                 ></Image>
 
-                <Card className="w-full shadow-lg">
+                <Card className="w-full md:w-4/5 lg:w-4/5 shadow-lg">
                     <CardBody>
                         <div className="mb-8">
                             <Input type="email" variant="underlined" label="Email" onChange={(e: any) => (email.current = e.target.value)} />
+                            <Input type="text" variant="underlined" label="Usuário" onChange={(e: any) => (userName.current = e.target.value)} />
                             <Input type="password" variant="underlined" label="Senha" onChange={(e: any) => (password.current = e.target.value)} />
+                            <Input type="password" variant="underlined" label="Confirmação Senha" onChange={(e: any) => (confPassword.current = e.target.value)} />
                         </div>
 
-                        <Button color="primary" onClick={onSubmit} className="bg-orange-400">Entrar</Button>
+                        <Button color="primary" onClick={cadastrar} className="bg-orange-400">Cadastrar-se</Button>
                     </CardBody>
                 </Card>
             </div>

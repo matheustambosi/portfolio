@@ -1,21 +1,41 @@
 import { NextAuthOptions } from "next-auth";
-import Credentials from "next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { toast } from "react-toastify";
+
 
 export const authOptions: NextAuthOptions = {
     providers: [
-        Credentials({
+        CredentialsProvider({
             name: "Credentials",
             credentials: {
-                userName: { label: "Email", type: "text" },
+                email: { label: "Email", type: "text" },
                 password: { label: "Password", type: "password" }
             },
-            authorize(credentials, req) {
-                if (credentials?.userName === "admin" && credentials?.password === "admin") {
-                    return {
-                        id: "1",
-                        name: "Admin",
-                        email: "admin@gmail.com"
+            async authorize(credentials, req) {
+                const request = {
+                    email: credentials?.email,
+                    senha: credentials?.password
+                }
+
+                var res = await fetch('http://localhost:43606/Autenticacao/Login', {
+                    method: 'POST',
+                    body: JSON.stringify(request),
+                    headers: {
+                        'Content-Type': 'application/json'
                     }
+                })
+
+                const data = await res.json()
+
+                if (res.ok && data) {
+                    return {
+                        id: data.codigo,
+                        nome: data.nome,
+                        token: data.token,
+                        tipoUsuario: data.tipoUsuario
+                    }
+                } else {
+                    throw Error(data.mensagem)
                 }
 
                 return null
@@ -25,5 +45,16 @@ export const authOptions: NextAuthOptions = {
 
     pages: {
         signIn: "/login"
+    },
+
+    callbacks: {
+        async jwt({ token, user }) {
+            return { ...token, ...user };
+        },
+
+        async session({ session, token }) {
+            session.user = token as any;
+            return session;
+        }
     }
 }

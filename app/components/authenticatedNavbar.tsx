@@ -3,35 +3,22 @@
 import { signOut, useSession } from 'next-auth/react'
 import {
     Navbar,
-    Button,
     NavbarBrand,
     NavbarContent,
-    NavbarItem,
     NavbarMenuToggle,
     NavbarMenu,
     NavbarMenuItem,
-    Link,
-    Image,
-    Avatar
+    Image
 } from "@nextui-org/react";
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '@/app/assets/images/logo.png';
 import { useRouter } from 'next/navigation';
+import { Routes, getUserRoutes, routes } from '../utils/routes';
 
 export default function AuthenticatedNavbar() {
     const { data: session, status } = useSession()
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-    const menuItems = [
-        { name: "Postagens", route: "/" },
-        { name: "Entrar em uma Atlética", route: "/lerqrcode" },
-        { name: "Eventos", route: "/eventos" },
-        { name: "Jogar pela Atlética", route: "atleta/quero-jogar" },
-        { name: "Usuários", route: "/atletica/usuarios" },
-        { name: "Atletas", route: "/atletica/atletas" },
-        { name: "QRCodes", route: "/atletica/qrcode" },
-        { name: "Sair" }
-    ];
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [menuItems, setMenuItems] = useState<Routes[]>();
 
     const router = useRouter()
 
@@ -44,6 +31,12 @@ export default function AuthenticatedNavbar() {
 
         setIsMenuOpen(false)
     }
+
+    useEffect(() => {
+        const menuItems = getUserRoutes(session?.user.tipoUsuario)
+
+        setMenuItems(menuItems)
+    }, [session])
 
     return session?.user && (
         <Navbar
@@ -62,18 +55,18 @@ export default function AuthenticatedNavbar() {
                     <Image
                         alt="logo"
                         src={logo.src}
-                        onClick={(e) => changeRoute(e, '/')}
+                        onClick={(e: any) => changeRoute(e, '/')}
                         width="180"
                     ></Image>
                 </NavbarBrand>
             </NavbarContent>
 
             <NavbarContent justify="end">
-                <h1 className="text-white">{session?.user.name}</h1>
+                <h1 className="text-white">{session?.user.nome}</h1>
             </NavbarContent>
 
             <NavbarMenu className="bg-orange-400 md:w-1/5">
-                {menuItems.map((item, index) => (
+                {menuItems?.map((item, index) => (
                     <NavbarMenuItem key={`${item}-${index}`} className='md:py-1 w-full text-white hover:cursor-pointer' onClick={(e) => changeRoute(e, item.route)}>
                         <p>{item.name}</p>
                     </NavbarMenuItem>

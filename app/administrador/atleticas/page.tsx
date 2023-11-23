@@ -3,19 +3,19 @@
 import React, { useEffect, useState } from "react";
 import { BreadcrumbItem, Breadcrumbs, useDisclosure } from "@nextui-org/react";
 import { getSession, useSession } from "next-auth/react";
-import { QRCode } from "@/app/types";
+import { Atletica } from "@/app/types";
 import AddEditModal from "./AddEditModal";
-import TableQrCode from "./TableQrCode";
+import TableAtletica from "./TableAtletica";
 
-export default function QRCodes() {
+export default function Atleticas() {
     const { data: session } = useSession({
         required: true
     })
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-    const [qrCode, setQrCode] = useState<QRCode>();
-    const [items, setItems] = useState<QRCode[]>([]);
+    const [atletica, setAtletica] = useState<Atletica>();
+    const [items, setItems] = useState<Atletica[]>([]);
     const [refreshKey, setRefreshKey] = useState(0);
 
     function refresh() {
@@ -26,7 +26,7 @@ export default function QRCodes() {
         const getData = async () => {
             const ses = await getSession()
 
-            const query = await fetch('http://localhost:43606/QRCode', {
+            const query = await fetch('http://localhost:43606/Atletica', {
                 headers: {
                     authorization: `Bearer ${ses?.user.token}`,
                     'Content-Type': 'application/json',
@@ -39,12 +39,20 @@ export default function QRCodes() {
         getData()
     }, [refreshKey])
 
+    function openEditModal(item: Atletica) {
+        setAtletica(item)
+        onOpen()
+    }
+
     function openAddModal() {
-        var qrCode: QRCode = {
-            descricao: "",
-            duracaoDias: 15
+        var atletica: Atletica = {
+            nome: "",
+            universidade: "",
+            cidade: "",
+            estado: "",
+            situacao: 1
         }
-        setQrCode(qrCode)
+        setAtletica(atletica)
         onOpen()
     }
 
@@ -52,14 +60,14 @@ export default function QRCodes() {
         <>
             <div className="p-2 h-5/6">
                 <Breadcrumbs className="py-2">
+                    <BreadcrumbItem size="lg">Administrador</BreadcrumbItem>
                     <BreadcrumbItem size="lg">Atleticas</BreadcrumbItem>
-                    <BreadcrumbItem size="lg">Usuarios</BreadcrumbItem>
                 </Breadcrumbs>
 
-                <TableQrCode refresh={refresh} qrCodes={items} openAddModal={openAddModal}></TableQrCode>
+                <TableAtletica refresh={refresh} atleticas={items} openEditModal={openEditModal} openAddModal={openAddModal}></TableAtletica>
             </div>
 
-            <AddEditModal isOpen={isOpen} onOpenChange={onOpenChange} refresh={refresh} item={qrCode}></AddEditModal>
+            <AddEditModal isOpen={isOpen} onOpenChange={onOpenChange} refresh={refresh} item={atletica}></AddEditModal>
         </>
     );
 }

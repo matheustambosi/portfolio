@@ -3,19 +3,19 @@
 import React, { useEffect, useState } from "react";
 import { BreadcrumbItem, Breadcrumbs, useDisclosure } from "@nextui-org/react";
 import { getSession, useSession } from "next-auth/react";
-import { QRCode } from "@/app/types";
+import { Usuario } from "@/app/types";
 import AddEditModal from "./AddEditModal";
-import TableQrCode from "./TableQrCode";
+import TableUsuarios from "./TableUsuarios";
 
-export default function QRCodes() {
+export default function Atleticas() {
     const { data: session } = useSession({
         required: true
     })
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-    const [qrCode, setQrCode] = useState<QRCode>();
-    const [items, setItems] = useState<QRCode[]>([]);
+    const [usuario, setUsuario] = useState<Usuario>();
+    const [items, setItems] = useState<Usuario[]>([]);
     const [refreshKey, setRefreshKey] = useState(0);
 
     function refresh() {
@@ -26,7 +26,7 @@ export default function QRCodes() {
         const getData = async () => {
             const ses = await getSession()
 
-            const query = await fetch('http://localhost:43606/QRCode', {
+            const query = await fetch('http://localhost:43606/Usuario', {
                 headers: {
                     authorization: `Bearer ${ses?.user.token}`,
                     'Content-Type': 'application/json',
@@ -39,12 +39,18 @@ export default function QRCodes() {
         getData()
     }, [refreshKey])
 
+    function openEditModal(item: Usuario) {
+        setUsuario(item)
+        onOpen()
+    }
+
     function openAddModal() {
-        var qrCode: QRCode = {
-            descricao: "",
-            duracaoDias: 15
+        var usuario: Usuario = {
+            nome: "",
+            email: "",
+            tipoUsuario: 1
         }
-        setQrCode(qrCode)
+        setUsuario(usuario)
         onOpen()
     }
 
@@ -56,10 +62,10 @@ export default function QRCodes() {
                     <BreadcrumbItem size="lg">Usuarios</BreadcrumbItem>
                 </Breadcrumbs>
 
-                <TableQrCode refresh={refresh} qrCodes={items} openAddModal={openAddModal}></TableQrCode>
+                <TableUsuarios refresh={refresh} usuarios={items} openEditModal={openEditModal} openAddModal={openAddModal}></TableUsuarios>
             </div>
 
-            <AddEditModal isOpen={isOpen} onOpenChange={onOpenChange} refresh={refresh} item={qrCode}></AddEditModal>
+            <AddEditModal isOpen={isOpen} onOpenChange={onOpenChange} refresh={refresh} item={usuario}></AddEditModal>
         </>
     );
 }
