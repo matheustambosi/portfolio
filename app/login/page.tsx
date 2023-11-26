@@ -3,13 +3,18 @@
 import React, { useRef } from "react"
 import { Input, Card, CardBody, Button, Image } from "@nextui-org/react";
 import logo from '@/app/assets/images/logo.png';
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { BackIcon } from "../assets/icons/BackIcon";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 export default function LoginPage() {
+    const { data: session } = useSession()
     const router = useRouter()
+
+    if (session) {
+        redirect('/eventos')
+    }
 
     const email = useRef("")
     const password = useRef("")

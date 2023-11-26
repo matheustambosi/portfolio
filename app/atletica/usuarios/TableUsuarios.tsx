@@ -131,17 +131,17 @@ export default function TableUsuarios({ usuarios, refresh, openEditModal, openAd
                         <TableRow key={item.codigo}>
                             <TableCell>
                                 <div className="flex flex-col">
-                                    <p className="text-bold text-sm capitalize">{item.nome}</p>
+                                    <p className="text-bold text-sm capitalize truncate">{item.nome}</p>
                                 </div>
                             </TableCell>
                             <TableCell>
                                 <div className="flex flex-col">
-                                    <p className="text-bold text-sm capitalize">{item.email}</p>
+                                    <p className="text-bold text-sm capitalize truncate">{item.email}</p>
                                 </div>
                             </TableCell>
                             <TableCell>
                                 <div className="flex flex-col">
-                                    <p className="text-bold text-sm capitalize">{tipoUsuario[item.tipoUsuario]}</p>
+                                    <p className="text-bold text-sm capitalize truncate">{tipoUsuario[item.tipoUsuario]}</p>
                                 </div>
                             </TableCell>
                             <TableCell>

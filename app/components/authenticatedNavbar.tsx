@@ -24,7 +24,7 @@ export default function AuthenticatedNavbar() {
 
     async function changeRoute(e: any, route?: string) {
         if (route) {
-            router.push(route)
+            router.replace(route)
         } else {
             await signOut()
         }

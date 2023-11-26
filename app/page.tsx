@@ -2,10 +2,16 @@
 
 import { Button, Image } from "@nextui-org/react";
 import logo from '@/app/assets/images/logo.png';
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
+  const { data: session } = useSession()
   const router = useRouter()
+
+  if (session) {
+    redirect('/eventos')
+  }
 
   return (
     <main className="bg-orange-400 h-full flex flex-col justify-center items-center px-4">

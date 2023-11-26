@@ -129,12 +129,12 @@ export default function TableQrCode({ qrCodes, refresh, openAddModal }: any) {
                         <TableRow key={item.codigo}>
                             <TableCell>
                                 <div className="flex flex-col">
-                                    <p className="text-bold text-sm capitalize">{item.descricao}</p>
+                                    <p className="text-bold text-sm capitalize truncate">{item.descricao}</p>
                                 </div>
                             </TableCell>
                             <TableCell>
                                 <div className="flex flex-col">
-                                    <p className="text-bold text-sm capitalize">{item.duracaoDias}</p>
+                                    <p className="text-bold text-sm capitalize truncate">{item.duracaoDias}</p>
                                 </div>
                             </TableCell>
                             <TableCell>

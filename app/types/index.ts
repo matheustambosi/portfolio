@@ -16,3 +16,14 @@ export interface QRCode {
     descricao: string,
     duracaoDias: number
 }
+
+export interface Modalidade {
+    descricao: string,
+    buscandoAtletas: boolean
+}
+
+export interface BuscandoAtletas {
+    codigoModalidade: string,
+    descricao: string,
+    inscrito: boolean
+}

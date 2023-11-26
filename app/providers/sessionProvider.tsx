@@ -10,7 +10,7 @@ interface Props {
 
 export default function NextAuthSessionProvider({ children }: Props) {
     return (
-        <NextUIProvider className="h-screen">
+        <NextUIProvider className="h-screen overflow-y-hidden">
             <SessionProvider>{children}</SessionProvider>
         </NextUIProvider>
     )

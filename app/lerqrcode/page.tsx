@@ -35,10 +35,8 @@ export default function Generate() {
             <main className="h-screen flex flex-col">
                 <div className="flex flex-col justify-center items-center bg-orange-400 w-full py-6">
                     <h1 className="p-6 text-xl text-center text-white">Escaneie o <span className="font-bold">QRCode de sua atletica</span> para ficar por dentro dos eventos!</h1>
-                </div>
 
-                <div className="w-full flex justify-center border-dashed border-orange-400 border-y-large">
-                    <Button onClick={onOpen}>Escanear QRCODE</Button>
+                    <Button onClick={onOpen}>LER QRCODE</Button>
                 </div>
 
                 <div className="flex flex-col justify-center items-center bg-orange-400 w-full h-full">

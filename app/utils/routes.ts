@@ -15,7 +15,7 @@ export interface Routes {
 export const routes: Routes[] = [
     { name: "Eventos", route: "/eventos", allRoles: true, roles: [] },
     { name: "Entrar em uma Atlética", route: "/lerqrcode", allRoles: false, roles: [TipoUsuario.SemAtletica, TipoUsuario.Administrador] },
-    { name: "Jogar pela Atlética", route: "atleta/quero-jogar", allRoles: false, roles: [TipoUsuario.Universitario, TipoUsuario.Administrador] },
+    { name: "Jogar pela Atlética", route: "/atleta/querojogar", allRoles: false, roles: [TipoUsuario.Universitario, TipoUsuario.Administrador] },
     { name: "Atleticas", route: "/administrador/atleticas", allRoles: false, roles: [TipoUsuario.Administrador] },
     { name: "Usuários", route: "/atletica/usuarios", allRoles: false, roles: [TipoUsuario.Representante, TipoUsuario.Administrador] },
     { name: "Modalidades", route: "/atletica/modalidades", allRoles: false, roles: [TipoUsuario.Representante, TipoUsuario.Administrador] },

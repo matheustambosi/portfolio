@@ -8,25 +8,20 @@ import { getSession } from 'next-auth/react';
 import { AddIcon } from '@/app/assets/icons/AddIcon';
 import { SearchIcon } from '@/app/assets/icons/SearchIcon';
 
-export default function TableAtletica({ atleticas, refresh, openEditModal, openAddModal }: any) {
+export default function TableModalidades({ modalidades, refresh, openEditModal, openAddModal }: any) {
     const [page, setPage] = React.useState(1);
     const [filterValue, setFilterValue] = React.useState("");
 
-    const situacao = ['Inativa', 'Ativa']
-
     const columns = [
-        { name: "NOME", uid: "nome" },
-        { name: "UNIVERSIDADE", uid: "universidade" },
-        { name: "CIDADE", uid: "cidade" },
-        { name: "ESTADO", uid: "estado" },
-        { name: "SITUAÇÃO", uid: "situacao" },
+        { name: "DESCRIÇÃO", uid: "descricao" },
+        { name: "BUSCANDO ATLETAS", uid: "buscandoAtletas" },
         { name: "AÇÕES", uid: "actions" },
     ]
 
-    async function deleteAletica(codigo: string) {
+    async function deleteModalidade(codigo: string) {
         const session = await getSession()
 
-        fetch(`http://localhost:43606/Atletica/${codigo}`, {
+        fetch(`http://localhost:43606/Modalidade/${codigo}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${session?.user.token}`
@@ -50,16 +45,16 @@ export default function TableAtletica({ atleticas, refresh, openEditModal, openA
     const hasSearchFilter = Boolean(filterValue);
 
     const filteredItems = React.useMemo(() => {
-        let filteredAtleticas = [...atleticas];
+        let filteredModalidades = [...modalidades];
 
         if (hasSearchFilter) {
-            filteredAtleticas = filteredAtleticas.filter((user) =>
+            filteredModalidades = filteredModalidades.filter((user) =>
                 user.nome.toLowerCase().includes(filterValue.toLowerCase()),
             );
         }
 
-        return filteredAtleticas;
-    }, [atleticas, filterValue, hasSearchFilter]);
+        return filteredModalidades;
+    }, [modalidades, filterValue, hasSearchFilter]);
 
     const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
@@ -133,27 +128,12 @@ export default function TableAtletica({ atleticas, refresh, openEditModal, openA
                         <TableRow key={item.codigo}>
                             <TableCell>
                                 <div className="flex flex-col">
-                                    <p className="text-bold text-sm capitalize truncate">{item.nome}</p>
+                                    <p className="text-bold text-sm capitalize truncate">{item.descricao}</p>
                                 </div>
                             </TableCell>
                             <TableCell>
                                 <div className="flex flex-col">
-                                    <p className="text-bold text-sm capitalize truncate">{item.universidade}</p>
-                                </div>
-                            </TableCell>
-                            <TableCell>
-                                <div className="flex flex-col">
-                                    <p className="text-bold text-sm capitalize truncate">{item.cidade}</p>
-                                </div>
-                            </TableCell>
-                            <TableCell>
-                                <div className="flex flex-col">
-                                    <p className="text-bold text-sm capitalize truncate">{item.estado}</p>
-                                </div>
-                            </TableCell>
-                            <TableCell>
-                                <div className="flex flex-col">
-                                    <p className="text-bold text-sm capitalize truncate">{situacao[item.situacao]}</p>
+                                    <p className="text-bold text-sm capitalize truncate">{item.buscandoAtletas ? 'Buscando Atletas' : 'Busca Desativada'}</p>
                                 </div>
                             </TableCell>
                             <TableCell>
@@ -165,9 +145,9 @@ export default function TableAtletica({ atleticas, refresh, openEditModal, openA
                                             </div>
                                         </span>
                                     </Tooltip>
-                                    <Tooltip color="danger" content="Deletar">
+                                    <Tooltip color="danger" content="Desvíncular da atlética">
                                         <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                                            <div onClick={(e) => deleteAletica(item.codigo)}>
+                                            <div onClick={(e) => deleteModalidade(item.codigo)}>
                                                 <DeleteIcon />
                                             </div>
                                         </span>
