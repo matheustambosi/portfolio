@@ -22,8 +22,24 @@ export interface Modalidade {
     buscandoAtletas: boolean
 }
 
+export interface Atleta {
+    nomeAtleta: string,
+    modalidade: string
+}
+
 export interface BuscandoAtletas {
     codigoModalidade: string,
     descricao: string,
     inscrito: boolean
+}
+
+export interface Evento {
+    codigo: string,
+    dtEvento: Date,
+    nomeEvento: string,
+    enderecoEvento: string
+}
+
+export interface NovoEvento {
+
 }

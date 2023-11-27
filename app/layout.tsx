@@ -1,5 +1,6 @@
 import './globals.css'
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-datetime-picker/dist/DateTimePicker.css';
 import { ToastContainer } from 'react-toastify';
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
