@@ -4,20 +4,28 @@ import { Button, Input, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter
 import { toast } from 'react-toastify';
 import { getSession } from 'next-auth/react';
 import DateTimePicker from 'react-datetime-picker';
+import { Modalidade } from '../types';
 
 type ValuePiece = Date | null;
 
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-export default function AddEditModal({ refresh, isOpen, onOpenChange }: any) {
+export default function AddEditModal({ refresh, isOpen, onOpenChange, modalidades }: any) {
     const [nomeEvento, setNomeEvento] = useState("")
     const [enderecoEvento, setEnderecoEvento] = useState("");
     const [dtEvento, setDtEvento] = useState<Value>(new Date());
     const [visivelSemAtletica, setVisivelSemAtletica] = useState(false);
     const [visivelComAtletica, setVisivelComAtletica] = useState(false);
+    const [modalidade, setModalidade] = useState("");
     const [visivelAtleta, setVisivelAtleta] = useState(false);
 
+    const handleSelectionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setModalidade(e.target.value);
+    };
+
     async function criarEvento(closeModal: any) {
+        const codigoModalidade = visivelAtleta ? modalidades[modalidade].codigo : null;
+
         const req = {
             NomeEvento: nomeEvento,
             EnderecoEvento: enderecoEvento,
@@ -25,6 +33,7 @@ export default function AddEditModal({ refresh, isOpen, onOpenChange }: any) {
             VisivelSemAtletica: visivelSemAtletica,
             VisivelComAtletica: visivelComAtletica,
             VisivelAtleta: visivelAtleta,
+            CodigoModalidade: codigoModalidade,
             Situacao: 1
         } as any
 
@@ -69,7 +78,7 @@ export default function AddEditModal({ refresh, isOpen, onOpenChange }: any) {
                                     <DateTimePicker onChange={setDtEvento} value={dtEvento} />
                                 </div>
 
-                                <div className="col-span-12">
+                                <div className="col-span-12 flex flex-col">
                                     <h1 className="my-3">Visibilidade:</h1>
                                     <Checkbox isSelected={visivelSemAtletica} onValueChange={setVisivelSemAtletica}>Usuários Sem Atletica</Checkbox>
                                     <Checkbox isSelected={visivelComAtletica} onValueChange={setVisivelComAtletica}>Usuários da sua Atlética</Checkbox>
@@ -77,7 +86,19 @@ export default function AddEditModal({ refresh, isOpen, onOpenChange }: any) {
                                 </div>
 
                                 {
-                                    visivelAtleta && <h1>CAMPO MODALIDADES</h1>
+                                    visivelAtleta &&
+                                    <Select
+                                        label="Modalidade"
+                                        className="col-span-12 mt-2"
+                                        selectedKeys={modalidade}
+                                        onChange={handleSelectionChange}
+                                    >
+                                        {modalidades.map((modalidade: any, index: any) => (
+                                            <SelectItem key={index}>
+                                                {modalidade.descricao}
+                                            </SelectItem>
+                                        ))}
+                                    </Select>
                                 }
                             </ModalBody>
                             <ModalFooter>

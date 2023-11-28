@@ -98,7 +98,7 @@ export default function TableAtletica({ atleticas, refresh, openEditModal, openA
                         inputWrapper: "border-1",
                     }}
                     placeholder="Pesquisar..."
-                    size="md"
+                    size="sm"
                     startContent={<SearchIcon className="text-default-300" />}
                     value={filterValue}
                     onClear={() => onClear()}

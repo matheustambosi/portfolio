@@ -21,7 +21,7 @@ export default function LoginPage() {
     const password = useRef("")
     const confPassword = useRef("")
 
-    function cadastrar() {
+    async function cadastrar() {
         var request = {
             nome: userName.current,
             email: email.current,
@@ -31,13 +31,23 @@ export default function LoginPage() {
 
         validarRequest(request)
 
-        const response = fetch('http://localhost:43606/Autenticacao/Cadastro', {
+        const res = await fetch('http://localhost:43606/Autenticacao/Cadastro', {
             method: 'POST',
             body: JSON.stringify(request),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
+
+        if (res.ok) {
+            
+        } else {
+            const data = res.json()
+
+            data.then((error) => {
+                toast(error.mensagem, { type: 'error', autoClose: 2000 })
+            })
+        }
     }
 
     function validarRequest(request: any) {

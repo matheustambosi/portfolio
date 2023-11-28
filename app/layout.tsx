@@ -8,7 +8,6 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import NextAuthSessionProvider from './providers/sessionProvider'
 import AuthenticatedNavbar from './components/AuthenticatedNavbar'
-import Footer from './components/Footer';
 
 const poppins = Poppins({ weight: ['500'], subsets: ['latin'] })
 
@@ -28,7 +27,6 @@ export default function RootLayout({
         <NextAuthSessionProvider>
           <AuthenticatedNavbar />
           {children}
-          <Footer />
         </NextAuthSessionProvider>
 
         <ToastContainer />

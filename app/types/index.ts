@@ -33,6 +33,11 @@ export interface BuscandoAtletas {
     inscrito: boolean
 }
 
+export interface EventoList {
+    dtEvento: Date,
+    eventos: Evento[]
+}
+
 export interface Evento {
     codigo: string,
     dtEvento: Date,
