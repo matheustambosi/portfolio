@@ -2,7 +2,7 @@
 
 import { getSession, useSession } from "next-auth/react"
 import { Button, useDisclosure } from "@nextui-org/react";
-import React from "react";
+import React, { useState } from "react";
 import { AlertIcon } from "../assets/icons/AlertIcon";
 import { toast } from "react-toastify";
 import QrCodeScannerModal from "./QrCodeScannerModal";
@@ -18,7 +18,7 @@ async function associarAtletica(codigoAtletica: string) {
         }
     }).then((res) => {
         if (res.ok) {
-            toast("QRCode lido com sucesso", { type: 'success', autoClose: 3000 })
+            toast("QRCode lido com sucesso, faça o login novamente para atualizar o sistema.", { type: 'success', autoClose: 3000 })
         }
     })
 }

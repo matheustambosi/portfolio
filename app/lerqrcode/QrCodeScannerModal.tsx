@@ -1,17 +1,19 @@
 import React from 'react'
 
 import { Button, Input, useDisclosure, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter } from "@nextui-org/react";
-import { QrReader } from "react-qr-reader";
+import QrReader from "react-qr-reader";
 
 
 export default function QrCodeScannerModal({ isOpen, onOpenChange, associarAtletica }: any) {
-  function callback(result: any, close: any) {
-    console.log(result)
-
-    if (result && result?.text) {
-      associarAtletica(result?.text)
+  const handleScan = (data: any, close: any) => {
+    if (data) {
+      associarAtletica(data)
       close()
     }
+  }
+
+  const handleError = (err: any) => {
+    console.error(err)
   }
 
   return (
@@ -23,9 +25,10 @@ export default function QrCodeScannerModal({ isOpen, onOpenChange, associarAtlet
               <ModalHeader>Escanear QRCode</ModalHeader>
               <ModalBody>
                 <QrReader
-                  onResult={(result, error) => callback(result, onClose)}
-                  constraints={{ facingMode: "environment" }}
-                  scanDelay={5000}
+                  onScan={(e) => handleScan(e, onClose)}
+                  onError={handleError}
+                  facingMode='environment'
+                  delay={2000}
                   className="w-full"
                 />
               </ModalBody>

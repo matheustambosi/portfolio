@@ -5,7 +5,7 @@ import { Input, Card, CardBody, Button, Image } from "@nextui-org/react";
 import logo from '@/app/assets/images/logo.png';
 import { signIn, useSession } from "next-auth/react";
 import { BackIcon } from "../assets/icons/BackIcon";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 export default function LoginPage() {
@@ -13,7 +13,7 @@ export default function LoginPage() {
     const router = useRouter()
 
     if (session) {
-        redirect('/eventos')
+        router.replace('/eventos')
     }
 
     const email = useRef("")
@@ -27,7 +27,7 @@ export default function LoginPage() {
         })
 
         if (res?.ok)
-            redirect('/eventos')
+            router.replace('/eventos')
         else
             toast(res?.error, { type: 'error', autoClose: 2000 })
     }

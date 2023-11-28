@@ -43,19 +43,17 @@ export default function Eventos() {
     return (
         <>
             <main className="h-5/6 flex justify-center bg-orange-100 shadow-lg">
-                <div className="flex flex-col w-full md:w-4/6 lg:w-3/6 px-16 bg-white shadow-[rgba(0,0,1,0.5)_0px_0px_10px_0px]">
+                <div className="flex flex-col px-4 w-full md:w-4/6 lg:w-3/6 lg:px-16 bg-white shadow-[rgba(0,0,1,0.5)_0px_0px_10px_0px]">
                     {
                         (session?.user.tipoUsuario === 2 || session?.user.tipoUsuario === 3) &&
                         <Button className="bg-orange-400 text-white text-lg py-6 mt-4" onClick={onOpen}>Novo Evento</Button>
                     }
 
-                    <h1 className="text-2xl text-center mt-6 font-bold">Eventos</h1>
-
-                    <div className="h-4/6 overflow-x-hidden mt-4">
+                    <div className="h-5/6 overflow-x-hidden mt-4">
                         {
                             items.length > 0 && items.map((item, index) => {
                                 return (
-                                    <Card key={item.codigo} className="mt-6">
+                                    <Card key={item.codigo} className="mt-6 shadow-md">
                                         <CardBody className="w-full flex flex-col justify-center rounded-lg">
                                             <h1 className="text-xl font-bold">{format(new Date(item.dtEvento), 'dd/MM/yyyy')}</h1>
                                             <h1 className="text-lg">{item.nomeEvento}</h1>

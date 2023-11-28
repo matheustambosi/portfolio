@@ -6,6 +6,7 @@ import { getSession, useSession } from "next-auth/react";
 import { QRCode } from "@/app/types";
 import AddEditModal from "./AddEditModal";
 import TableQrCode from "./TableQrCode";
+import QrCodeModal from "./QrCodeModal";
 
 export default function QRCodes() {
     const { data: session } = useSession({
@@ -13,6 +14,8 @@ export default function QRCodes() {
     })
 
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const { isOpen: isOpenQrCode, onOpen: onOpenQrCode, onOpenChange: onOpenChangeQrCode } = useDisclosure();
+
 
     const [qrCode, setQrCode] = useState<QRCode>();
     const [items, setItems] = useState<QRCode[]>([]);
@@ -48,6 +51,11 @@ export default function QRCodes() {
         onOpen()
     }
 
+    function openQrCodeModal(item: QRCode) {
+        setQrCode(item)
+        onOpenQrCode()
+    }
+
     return (
         <>
             <div className="p-2 h-5/6">
@@ -56,9 +64,10 @@ export default function QRCodes() {
                     <BreadcrumbItem size="lg">QRCodes</BreadcrumbItem>
                 </Breadcrumbs>
 
-                <TableQrCode refresh={refresh} qrCodes={items} openAddModal={openAddModal}></TableQrCode>
+                <TableQrCode refresh={refresh} qrCodes={items} openAddModal={openAddModal} openQrCodeModal={openQrCodeModal}></TableQrCode>
             </div>
 
+            <QrCodeModal isOpen={isOpenQrCode} onOpenChange={onOpenChangeQrCode} item={qrCode}></QrCodeModal>
             <AddEditModal isOpen={isOpen} onOpenChange={onOpenChange} refresh={refresh} item={qrCode}></AddEditModal>
         </>
     );

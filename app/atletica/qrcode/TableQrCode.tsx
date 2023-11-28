@@ -6,8 +6,9 @@ import { toast } from 'react-toastify';
 import { getSession } from 'next-auth/react';
 import { AddIcon } from '@/app/assets/icons/AddIcon';
 import { SearchIcon } from '@/app/assets/icons/SearchIcon';
+import { DownloadIcon } from '@/app/assets/icons/DownloadIcon';
 
-export default function TableQrCode({ qrCodes, refresh, openAddModal }: any) {
+export default function TableQrCode({ qrCodes, refresh, openAddModal, openQrCodeModal }: any) {
     const [page, setPage] = React.useState(1);
     const [filterValue, setFilterValue] = React.useState("");
 
@@ -16,8 +17,6 @@ export default function TableQrCode({ qrCodes, refresh, openAddModal }: any) {
         { name: "DURAÇÃO DIAS", uid: "duracaoDias" },
         { name: "AÇÕES", uid: "actions" },
     ]
-
-    const tipoUsuario = ['Sem Atletica', 'Universitário', 'Representante', 'Administrador']
 
     async function deleteQrCode(codigo: string) {
         const session = await getSession()
@@ -139,6 +138,13 @@ export default function TableQrCode({ qrCodes, refresh, openAddModal }: any) {
                             </TableCell>
                             <TableCell>
                                 <div className="relative flex items-center gap-2">
+                                    <Tooltip content="Download QRCode">
+                                        <span className="text-lg text-danger cursor-pointer active:opacity-50">
+                                            <div onClick={(e) => openQrCodeModal(item)}>
+                                                <DownloadIcon className="text-black" />
+                                            </div>
+                                        </span>
+                                    </Tooltip>
                                     <Tooltip color="danger" content="Inativar QRCode">
                                         <span className="text-lg text-danger cursor-pointer active:opacity-50">
                                             <div onClick={(e) => deleteQrCode(item.codigo)}>
