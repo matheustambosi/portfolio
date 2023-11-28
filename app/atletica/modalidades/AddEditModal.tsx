@@ -79,7 +79,7 @@ export default function AddEditModal({ refresh, isOpen, onOpenChange, item }: an
                 <ModalContent>
                     {(onClose) => (
                         <>
-                            <ModalHeader className="flex flex-col gap-1">Nova Atletica</ModalHeader>
+                            <ModalHeader className="flex flex-col gap-1">Nova Modalidade</ModalHeader>
                             <ModalBody>
                                 <Input type="text" label="Descrição" value={descricao} onChange={(e: any) => setDescricao(e.target.value)} />
 

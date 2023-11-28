@@ -27,7 +27,7 @@ export default function LoginPage() {
         })
 
         if (res?.ok)
-            router.push('/eventos')
+            redirect('/eventos')
         else
             toast(res?.error, { type: 'error', autoClose: 2000 })
     }

@@ -59,7 +59,7 @@ export default function Atleticas() {
             <div className="p-2 h-5/6">
                 <Breadcrumbs className="py-2">
                     <BreadcrumbItem size="lg">Atleticas</BreadcrumbItem>
-                    <BreadcrumbItem size="lg">Usuarios</BreadcrumbItem>
+                    <BreadcrumbItem size="lg">Usuários</BreadcrumbItem>
                 </Breadcrumbs>
 
                 <TableUsuarios refresh={refresh} usuarios={items} openEditModal={openEditModal} openAddModal={openAddModal}></TableUsuarios>

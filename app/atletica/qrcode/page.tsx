@@ -53,7 +53,7 @@ export default function QRCodes() {
             <div className="p-2 h-5/6">
                 <Breadcrumbs className="py-2">
                     <BreadcrumbItem size="lg">Atleticas</BreadcrumbItem>
-                    <BreadcrumbItem size="lg">Usuarios</BreadcrumbItem>
+                    <BreadcrumbItem size="lg">QRCodes</BreadcrumbItem>
                 </Breadcrumbs>
 
                 <TableQrCode refresh={refresh} qrCodes={items} openAddModal={openAddModal}></TableQrCode>

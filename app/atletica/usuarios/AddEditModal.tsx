@@ -88,7 +88,7 @@ export default function AddEditModal({ refresh, isOpen, onOpenChange, item }: an
                 <ModalContent>
                     {(onClose) => (
                         <>
-                            <ModalHeader className="flex flex-col gap-1">Nova Atletica</ModalHeader>
+                            <ModalHeader className="flex flex-col gap-1">Novo Usuário</ModalHeader>
                             <ModalBody>
                                 <Input type="text" label="Nome" value={nomeUsuario} onChange={(e: any) => setNomeUsuario(e.target.value)} />
 
