@@ -2,7 +2,7 @@
 
 import { getSession, useSession } from "next-auth/react"
 import { Button, useDisclosure } from "@nextui-org/react";
-import React, { useState } from "react";
+import React from "react";
 import { AlertIcon } from "../assets/icons/AlertIcon";
 import { toast } from "react-toastify";
 import QrCodeScannerModal from "./QrCodeScannerModal";

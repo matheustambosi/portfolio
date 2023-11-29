@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import NextAuthSessionProvider from './providers/sessionProvider'
-import AuthenticatedNavbar from './components/AuthenticatedNavbar'
+import AuthenticatedNavbar from './components/authenticatedNavbar'
 
 const poppins = Poppins({ weight: ['500'], subsets: ['latin'] })
 

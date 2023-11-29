@@ -36,3 +36,6 @@ next-env.d.ts
 
 # enviroment variables
 .env
+
+# vs files
+.vs
