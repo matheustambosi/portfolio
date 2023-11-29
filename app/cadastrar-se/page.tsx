@@ -31,6 +31,9 @@ export default function LoginPage() {
 
         validarRequest(request)
 
+        console.log(process.env)
+        console.log(process.env.API_URL)
+
         const res = await fetch(`${process.env.API_URL}/Autenticacao/Cadastro`, {
             method: 'POST',
             body: JSON.stringify(request),
