@@ -24,7 +24,7 @@ export default function TableUsuarios({ usuarios, refresh, openEditModal, openAd
     async function deleteUsuario(codigo: string) {
         const session = await getSession()
 
-        fetch(`http://localhost:43606/Usuario/${codigo}`, {
+        fetch(`${process.env.API_URL}/Usuario/${codigo}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${session?.user.token}`

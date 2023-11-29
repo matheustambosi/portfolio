@@ -21,7 +21,7 @@ export default function TableModalidades({ modalidades, refresh, openEditModal, 
     async function deleteModalidade(codigo: string) {
         const session = await getSession()
 
-        fetch(`http://localhost:43606/Modalidade/${codigo}`, {
+        fetch(`${process.env.API_URL}/Modalidade/${codigo}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${session?.user.token}`

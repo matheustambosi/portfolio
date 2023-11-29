@@ -17,7 +17,7 @@ export default function AddEditModal({ refresh, isOpen, onOpenChange, item }: an
         const session = await getSession()
 
         if (item.codigo) {
-            fetch('http://localhost:43606/Modalidade/' + item.codigo, {
+            fetch(`${process.env.API_URL}/Modalidade/` + item.codigo, {
                 method: 'PUT',
                 body: JSON.stringify(req),
                 headers: {
@@ -38,7 +38,7 @@ export default function AddEditModal({ refresh, isOpen, onOpenChange, item }: an
                 }
             })
         } else {
-            fetch('http://localhost:43606/Modalidade', {
+            fetch(`${process.env.API_URL}/Modalidade`, {
                 method: 'POST',
                 body: JSON.stringify(req),
                 headers: {

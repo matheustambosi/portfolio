@@ -21,7 +21,7 @@ export default function TableQrCode({ qrCodes, refresh, openAddModal, openQrCode
     async function deleteQrCode(codigo: string) {
         const session = await getSession()
 
-        fetch(`http://localhost:43606/QRCode/${codigo}`, {
+        fetch(`${process.env.API_URL}/QRCode/${codigo}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${session?.user.token}`

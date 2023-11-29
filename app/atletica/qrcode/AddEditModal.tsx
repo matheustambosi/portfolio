@@ -18,7 +18,7 @@ export default function AddEditModal({ refresh, isOpen, onOpenChange, item }: an
 
         const session = await getSession()
 
-        fetch('http://localhost:43606/QRCode', {
+        fetch(`${process.env.API_URL}/QRCode`, {
             method: 'POST',
             body: JSON.stringify(req),
             headers: {

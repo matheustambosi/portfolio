@@ -31,7 +31,7 @@ export default function LoginPage() {
 
         validarRequest(request)
 
-        const res = await fetch('http://localhost:43606/Autenticacao/Cadastro', {
+        const res = await fetch(`${process.env.API_URL}/Autenticacao/Cadastro`, {
             method: 'POST',
             body: JSON.stringify(request),
             headers: {

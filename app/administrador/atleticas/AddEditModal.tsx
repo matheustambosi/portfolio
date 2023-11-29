@@ -29,7 +29,7 @@ export default function AddEditModal({ refresh, isOpen, onOpenChange, item }: an
         const session = await getSession()
 
         if (item.codigo) {
-            fetch('http://localhost:43606/Atletica/' + item.codigo, {
+            fetch(`${process.env.API_URL}/Atletica/` + item.codigo, {
                 method: 'PUT',
                 body: JSON.stringify(req),
                 headers: {
@@ -50,7 +50,7 @@ export default function AddEditModal({ refresh, isOpen, onOpenChange, item }: an
                 }
             })
         } else {
-            fetch('http://localhost:43606/Atletica', {
+            fetch(`${process.env.API_URL}/Atletica`, {
                 method: 'POST',
                 body: JSON.stringify(req),
                 headers: {

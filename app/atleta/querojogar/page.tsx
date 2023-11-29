@@ -24,7 +24,7 @@ export default function Generate() {
         const getData = async () => {
             const ses = await getSession()
 
-            const query = await fetch('http://localhost:43606/Modalidade/BuscandoAtletas', {
+            const query = await fetch(`${process.env.API_URL}/Modalidade/BuscandoAtletas`, {
                 headers: {
                     authorization: `Bearer ${ses?.user.token}`,
                     'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export default function Generate() {
             ModalidadesAtivas: selected
         } as any
 
-        const res = await fetch('http://localhost:43606/Atleta/SalvarAtleta', {
+        const res = await fetch(`${process.env.API_URL}/Atleta/SalvarAtleta`, {
             method: 'POST',
             body: JSON.stringify(req),
             headers: {

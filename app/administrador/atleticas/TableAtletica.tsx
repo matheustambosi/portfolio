@@ -26,7 +26,7 @@ export default function TableAtletica({ atleticas, refresh, openEditModal, openA
     async function deleteAletica(codigo: string) {
         const session = await getSession()
 
-        fetch(`http://localhost:43606/Atletica/${codigo}`, {
+        fetch(`${process.env.API_URL}/Atletica/${codigo}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${session?.user.token}`
