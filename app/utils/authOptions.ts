@@ -17,6 +17,8 @@ export const authOptions: NextAuthOptions = {
                     senha: credentials?.password
                 }
 
+                console.log(process.env.API_URL)
+
                 var res = await fetch(`${process.env.API_URL}/Autenticacao/Login`, {
                     method: 'POST',
                     body: JSON.stringify(request),
