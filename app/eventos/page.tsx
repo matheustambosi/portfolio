@@ -30,7 +30,7 @@ export default function Eventos() {
         const getData = async () => {
             const ses = await getSession()
 
-            const query = await fetch(`${process.env.API_URL}/Evento`, {
+            const query = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/Evento`, {
                 headers: {
                     authorization: `Bearer ${ses?.user.token}`,
                     'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export default function Eventos() {
 
     function openAddEvento() {
         const getModalidades = async () => {
-            const query = await fetch(`${process.env.API_URL}/Modalidade`, {
+            const query = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/Modalidade`, {
                 headers: {
                     authorization: `Bearer ${session?.user.token}`,
                     'Content-Type': 'application/json',

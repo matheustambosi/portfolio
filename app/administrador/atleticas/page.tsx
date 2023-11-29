@@ -26,7 +26,7 @@ export default function Atleticas() {
         const getData = async () => {
             const ses = await getSession()
 
-            const query = await fetch(`${process.env.API_URL}/Atletica`, {
+            const query = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/Atletica`, {
                 headers: {
                     authorization: `Bearer ${ses?.user.token}`,
                     'Content-Type': 'application/json',

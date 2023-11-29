@@ -19,7 +19,7 @@ export default function TableAtletas({ atletas, refresh }: any) {
     async function deleteAtleta(codigo: string) {
         const session = await getSession()
 
-        fetch(`${process.env.API_URL}/Atleta/${codigo}`, {
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/Atleta/${codigo}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${session?.user.token}`

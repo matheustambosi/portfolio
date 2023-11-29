@@ -31,10 +31,9 @@ export default function LoginPage() {
 
         validarRequest(request)
 
-        console.log(process.env.TESTE)
-        console.log(process.env.API_URL)
+        console.log(process.env.NEXT_PUBLIC_API_URL)
 
-        const res = await fetch(`https://atletigo.azurewebsites.net/Autenticacao/Cadastro`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/Autenticacao/Cadastro`, {
             method: 'POST',
             body: JSON.stringify(request),
             headers: {

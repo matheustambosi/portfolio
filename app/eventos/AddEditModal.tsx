@@ -39,7 +39,7 @@ export default function AddEditModal({ refresh, isOpen, onOpenChange, modalidade
 
         const session = await getSession()
 
-        const res = await fetch(`${process.env.API_URL}/Evento`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/Evento`, {
             method: 'POST',
             body: JSON.stringify(req),
             headers: {

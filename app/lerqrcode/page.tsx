@@ -10,7 +10,7 @@ import QrCodeScannerModal from "./QrCodeScannerModal";
 async function associarAtletica(codigoAtletica: string) {
     const session = await getSession()
 
-    await fetch(`${process.env.API_URL}/Usuario/AssociarAtletica/${codigoAtletica}`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/Usuario/AssociarAtletica/${codigoAtletica}`, {
         method: 'POST',
         headers: {
             authorization: `Bearer ${session?.user.token}`,
