@@ -42,7 +42,8 @@ export default function LoginPage() {
         })
 
         if (res.ok) {
-            
+            toast('Cadastro realizado com sucesso', { type: 'success', autoClose: 2000 })
+            router.replace('/login')
         } else {
             const data = res.json()
 
