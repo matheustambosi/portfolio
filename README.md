@@ -1,4 +1,4 @@
-# AtletGo
+# AtletiGo
 
 URLs úteis [Frontend](https://portfolio-matheustambosi.vercel.app) e [Backend](https://atletigo.azurewebsites.net/swagger/index.html)
 
@@ -91,7 +91,27 @@ Foi criado um projeto no [Figma](https://www.figma.com/file/7Eh2hEce9OKarSogU60E
 Projeto utiliza o board na aba de "Projetos" no Github para o gerenciamento das tarefas, assim como as histórias de usuário.
 
 # Como Rodar Local
-- Ferramentas necessárias: VisualStudio Community e Runtime do .Net Core 3.1
+- Ferramentas necessárias: VisualStudio Community, Runtime do .Net Core 3.1 e PostgreSQL (PgAdmin 4)
 - Node v16.20
 
 Para executar o AtletiGo de forma local é necessário clonar o repositório do [Backend](https://github.com/matheustambosi/portfolio-backend)
+
+Abrir o AtletiGo.sln no repositório do backend.
+
+No arquivo `appsettings.Development.json` utilizar a seguinte connection string
+- `Username=postgres;Password=admin;Host=localhost;Port=5432;Database=AtletiGo;Pooling=true;`
+
+Criar no PgAdmin (localhost) uma Database chamada **AtletiGo** e execute os comandos SQL para criar as tablas. Arquivo se encontra no repositório do backend no diretório `AtletiGo/Core/Utils/Atletigo.sql`
+
+Executar a aplicação do backend pela interface do VisualStudio Community.
+
+Clonar o repositório do frontend e no terminal executar os seguinte:
+- `npm i`
+
+Criar um arquivo `.env` no repositório do frontend com as seguintes informações:
+- NEXTAUTH_URL="http://localhost:3000"
+- NEXTAUTH_SECRET="<QUALQUER_INFORMACAO>"
+- NEXT_PUBLIC_API_URL="http://localhost:43606 (Certificar que a URL é a mesma que o Backend está rodando)"
+
+Executar o seguinte comando:
+- `npm run dev`
