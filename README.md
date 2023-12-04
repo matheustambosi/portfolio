@@ -1,19 +1,21 @@
 # AtletGo
 
+URLs úteis [Frontend](https://portfolio-matheustambosi.vercel.app) e [Backend](https://atletigo.azurewebsites.net/swagger/index.html)
+
 # Objetivo
 
-O projeto tem como objetivo facilitar e centralizar a comunicação entre as seguintes entidades: Universitários e Atléticas. O sistema é um PWA (Progressive Web App) que após o universitário fazer um cadastro, poderá ler um QRCode gerado pelos representantes da atlética (gerado no mesmo sistema) para entrar na atlética vinculada ao QRCode, após isso o usuário irá ter acesso as postagens e eventos daquela atlética, assim como a possíbilidade de inscrever-se para jogar pelos times das modalidades disponíveis, que após a aprovação dos representantes, irá permitir a vizualização das datas dos treinos daquela modalidade para aquele usuário.
+O projeto tem como objetivo facilitar e centralizar a comunicação entre as seguintes entidades: Universitários e Atléticas. O sistema é um PWA (Progressive Web App) que após o universitário fazer um cadastro, poderá ler um QRCode gerado pelos representantes da atlética (gerado no mesmo sistema) para entrar na atlética vinculada ao QRCode, após isso o usuário irá ter acesso as postagens e eventos daquela atlética, assim como a possíbilidade de inscrever-se para ver as datas de jogos e treinos das modalidades disponíveis, que somente irão ficar disponíveis com a configuração dos representantes, após isso disponibilizará a vizualização das datas dos treinos daquela modalidade para aquele usuário.
 
-Sistema também irá disponibilizar exclusivamente para representantes das atléticas as interfaces de gerenciamento dos usuários da atlética, gerenciamento dos atletas que se inscreveram para jogar, gerenciamento da agenda que será apresentada aos usuários, gerenciamento das postagens listadas na tela inicial, assim como a interface que irá controlar os QRCodes para a entrada.
+Sistema também irá disponibilizar exclusivamente para representantes das atléticas as interfaces de gerenciamento dos usuários da atlética, gerenciamento dos atletas que se inscreveram nas modalidades, gerenciamento da agenda que será apresentada aos usuários, assim como a interface que irá controlar os QRCodes para a entrada.
 
 # Contexto
 
-Atualmente as divulgações são feitas nas redes sociais, que acabam "concorrendo" com outros perfis, diminuindo assim a visibilidade das postagens. A solução feita pelo AtletGo é um sistema onde irá centralizar as postagens da atlética e também facilitar a visualização de datas de eventos e disponibilizando a funcionalidade para encontrar atletas para jogar pela atlética.
+Atualmente as divulgações são feitas nas redes sociais, que acabam "concorrendo" com outros perfis, diminuindo assim a visibilidade das postagens. A solução feita pelo AtletGo é um sistema onde irá centralizar as postagens da atlética e também facilitar a visualização de datas de eventos e disponibilizando a funcionalidade para encontrar atletas para jogar pela atlética, futuramente também podendo evoluir para a venda de itens da atletica integrada ao aplicativo.
 
 # Restrições
 
-- Sistema não irá oferecer venda de produtos das atléticas (Canecas, uniformes, ingressos e etc).
-- Sistema não se responsabiliza pelas postagens dos representantes das atléticas, sendo assim o controle feito exclusivamente pela atlética.
+- Sistema não irá oferecer venda de produtos das atléticas (Canecas, uniformes, ingressos e etc) em sua primeira versão.
+- Sistema não se responsabiliza pelas postagens dos representantes das atléticas, sendo assim o controle feito exclusivamente pela atlética, assim como o gerenciamento dos seus usuários e atletas.
 
 # Trade-offs
 
@@ -50,18 +52,15 @@ Foi criado um projeto no [Figma](https://www.figma.com/file/7Eh2hEce9OKarSogU60E
 # Requisitos e [Casos de uso](/docs/assets/UseCase.png)
 
 ## Funcionais
-1. Postagens
-   - Representantes poderão adicionar postagens.
+1. Agenda
+   - Representantes poderão incluir eventos.
    - Integrantes da atlética poderão ler.
+   - Atletas poderão ver datas de treinos das modalidades que segue.
 2. Gerenciar usuários
-   - Representantes poderão inativar usuários.
+   - Representantes poderão remover usuários de suas atléticas.
+   - Representantes poderão alterar perfil dos universitários.
 3. Gerenciar atletas
-   - Representantes poderão vizualizar as solicitações.
-   - Representantes poderão alterar perfil dos universitários para atleta.
-5. Agenda
-   - Integrantes da atlética poderão ver datas de campeonatos.
-   - Atletas poderão ver datas de treinos que foram aprovados nas respectivas modalidades.
-   - Representantes poderão incluir e editar eventos.
+   - Representantes poderão vizualizar seus atletas e as modalidades que segue.
 6. QRCode
    - Representantes poderão criar e excluir QRCodes para entrar nas atléticas.
    - Integrantes poderão ler os QRCodes e entrar.
@@ -75,14 +74,24 @@ Foi criado um projeto no [Figma](https://www.figma.com/file/7Eh2hEce9OKarSogU60E
 
 # Stack
 
-- Frontend - Nuxt v2 (Vuejs) e Tailwind CSS
-- Backend - C# e .Net Core
-- Banco de Dados - MySql
+- Frontend - Nextjs (React) e Tailwind CSS
+- Backend - C# e .Net Core 3.1
+- Banco de Dados - PostgreSQL
 
-- Teste E2E - Cypress
-- Cobertura de código - SonarQube
-- Observabilidade - Datadog
+# Qualidade de Software
+- [Datadog](https://sonarcloud.io/summary/overall?id=matheustambosi_portfolio-backend)
+- [CodeCov](https://app.codecov.io/gh/matheustambosi/portfolio-backend/tree/main)
+
+# Observabilidade
+- Utilizando application insights no portal azure onde a API está disponibilizada temos acesso a informações sobre a saúde da aplicação.
+- ![image](https://github.com/matheustambosi/portfolio/assets/61556272/c641e8b7-a13a-47b0-92d5-271bc135327b)
 
 # Modelagem
 
 Projeto utiliza o board na aba de "Projetos" no Github para o gerenciamento das tarefas, assim como as histórias de usuário.
+
+# Como Rodar Local
+- Ferramentas necessárias: VisualStudio Community e Runtime do .Net Core 3.1
+- Node v16.20
+
+Para executar o AtletiGo de forma local é necessário clonar o repositório do [Backend](https://github.com/matheustambosi/portfolio-backend)
