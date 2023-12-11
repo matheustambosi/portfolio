@@ -52,25 +52,62 @@ Foi criado um projeto no [Figma](https://www.figma.com/file/7Eh2hEce9OKarSogU60E
 # Requisitos e [Casos de uso](/docs/assets/UseCase.png)
 
 ## Funcionais
-1. Agenda
-   - Representantes poderão incluir eventos.
-   - Integrantes da atlética poderão ler.
-   - Atletas poderão ver datas de treinos das modalidades que segue.
-2. Gerenciar usuários
-   - Representantes poderão remover usuários de suas atléticas.
-   - Representantes poderão alterar perfil dos universitários.
-3. Gerenciar atletas
-   - Representantes poderão vizualizar seus atletas e as modalidades que segue.
-6. QRCode
-   - Representantes poderão criar e excluir QRCodes para entrar nas atléticas.
-   - Integrantes poderão ler os QRCodes e entrar.
+
+#### Para universitários (sem atletica)
+
+| Código | Identificação     | Classificação | Ator         | Objetivo                                                                   |
+| ------ | ----------------  | ------------- | ------------ | -------------------------------------------------------------------------- |
+| RF001  | Navegar Agenda    | Essencial     | Sem Atletica | Visualizar eventos cadastrados de acordo com a visilibilidade do usuario      |
+| RF002  | Associar Atletica | Essencial     | Sem Atletica | Entrar em uma atletica utilizando o QRCode gerado pelos Representantes     |
+
+#### Para universitários (com atletica)
+
+| Código | Identificação       | Classificação | Ator         | Objetivo                                                                                 |
+| ------ | ----------------    | ------------- | ------------ | ---------------------------------------------------------------------------------------- |
+| RF003  | Navegar Agenda      | Essencial     | Com Atletica | Visualizar eventos cadastrados de acordo com a visilibilidade/modalidade do usuario      |
+| RF004  | Jogar pela Atletica | Essencial     | Com Atletica | Escolher entre as modalidades que estão buscando atletas que deseja seguir               |
+
+#### Para representantes
+
+| Código | Identificação         | Classificação | Ator          | Objetivo                                                                                  |
+| ------ | --------------------- | ------------- | ------------- | ----------------------------------------------------------------------------------------- |
+| RF005  | Navegar Agenda        | Essencial     | Representante | Visualizar eventos cadastrados de acordo com a visilibilidade/modalidade do usuario       |
+| RF006  | Cadastrar Evento      | Essencial     | Representante | Cadastrar eventos podendo escolher a visibilidade e modalidades que quiser associar       |
+| RF007  | Editar Eventos        | Essencial     | Representante | Editar informações de eventos da sua atletica                                             |
+| RF008  | Deletar Eventos       | Essencial     | Representante | Remover eventos cadastrados pela sua atletica                                             |
+| RF009  | Navegar QRCodes       | Essencial     | Representante | Visualizar qrcodes cadastrados da sua atlética                                            |
+| RF010  | Cadastrar QRCodes     | Essencial     | Representante | Cadastrar qrcodes para que universiários entrem na sua atlética                           |
+| RF011  | Deletar QRCodes       | Essencial     | Representante | Deletar qrcodes de sua atletica                                                           |
+| RF012  | Navegar Usuários      | Essencial     | Representante | Visualizar usuários cadastrados da sua atlética                                           |
+| RF013  | Cadastrar Usuários    | Essencial     | Representante | Cadastrar usuários na sua atlética, tendo a possibilidade cadastrar outros representantes |
+| RF014  | Editar Usuários       | Essencial     | Representante | Editar informações de usuários da sua atletica                                            |
+| RF015  | Deletar Usuários      | Essencial     | Representante | Remover usuários de sua atletica                                                          |
+| RF016  | Navegar Modalidades   | Essencial     | Representante | Visualizar modalidades cadastrados da sua atlética                                        |
+| RF017  | Cadastrar Modalidades | Essencial     | Representante | Cadastrar modalidades da sua atlética, podendo marcar se deseja buscar atletas            |
+| RF018  | Editar Modalidades    | Essencial     | Representante | Editar informações de modalidades da sua atletica                                         |
+| RF019  | Deletar Modalidades   | Essencial     | Representante | Remover modalidades de sua atletica                                                       |
+| RF020  | Navegar Atletas       | Essencial     | Representante | Visualizar atletas da sua atlética e suas modalidades associadas                          |
+| RF021  | Deletar Atletas       | Essencial     | Representante | Remover o atléta daquela modalidade                                                       |
+
+#### Para Administrador
+
+| Código | Identificação         | Classificação | Ator          | Objetivo                                                                                  |
+| ------ | --------------------- | ------------- | ------------- | ----------------------------------------------------------------------------------------- |
+| RF022  | Navegar Atleticas     | Essencial     | Administrador | Visualizar atléticas                                                                      |
+| RF023  | Cadastrar Atleticas   | Essencial     | Administrador | Cadastrar atléticas                                                                       |
+| RF024  | Editar Atleticas      | Essencial     | Administrador | Editar informações de atléticas                                                           |
+| RF025  | Deletar Atleticas     | Essencial     | Administrador | Inativar atléticas                                                                        |
 
 ## Não Funcionais
-1. Vizualização da agenda de forma offline.
-2. Usabilidade
-   - Interface simples e objetiva.
-3. Eficiencia
-   - Leitura do QRCode de forma eficiente.
+
+#### Requisitos Não Funcionais
+
+| Código | Identificação            | Classificação | Objetivo                                                  |
+| ------ | ------------------------ | ------------- | --------------------------------------------------------- |
+| RNF001 | Offline                  | Normal        | Apresentar eventos sem internet                           |
+| RNF002 | Usabilidade              | Normal        | Interface simples e objetiva                              |
+| RNF003 | Disponibilidade          | Normal        | Sistema deve ficar ativo 24/7                             |
+| RNF004 | Desempenho               | Normal        | Baixa latência para todas as operações                    |
 
 # Stack
 
