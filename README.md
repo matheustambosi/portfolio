@@ -87,7 +87,7 @@ Foi criado um projeto no [Figma](https://www.figma.com/file/7Eh2hEce9OKarSogU60E
 | RF018  | Editar Modalidades    | Essencial     | Representante | Editar informações de modalidades da sua atletica                                         |
 | RF019  | Deletar Modalidades   | Essencial     | Representante | Remover modalidades de sua atletica                                                       |
 | RF020  | Navegar Atletas       | Essencial     | Representante | Visualizar atletas da sua atlética e suas modalidades associadas                          |
-| RF021  | Deletar Atletas       | Essencial     | Representante | Remover o atléta daquela modalidade                                                       |
+| RF021  | Deletar Atletas       | Essencial     | Representante | Remover o atleta daquela modalidade                                                       |
 
 #### Para Administrador
 
